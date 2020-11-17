@@ -1,5 +1,7 @@
 from time import sleep
+history = {
 
+}
 
 # define our clear function
 def init():
@@ -8,7 +10,7 @@ def init():
     print("||   ______  __ __       __  __ __ __  __ ||")
     print("||  /  /  / /-/ / /_/ / / / /-/ / / / /_/ ||")
     print("|| /  /  / / / / / / / / / / / / /_/ / \\  ||")
-    print("||                  V1.1                  ||")
+    print("||                  V1.2                  ||")
     print("||                                        ||")
     print("============================================")
     print("")
@@ -20,14 +22,33 @@ def init():
     print("5. Help")
     print("6. Tape Diagram Solver")
     print("7. Update Log")
+    print("8. History")
     print("------------------")
     print("")
     menu()
+
+def historyread():
+  clear()
+  print("")
+  print("====== History ======")
+  for x, y in history.items():
+    print("||", x, "=", y)
+  print("=====================")
+  print("")
+  print("Press enter to continue")
+  petcfh = input("")
+  if petcfh == "":
+    clear()
+    init()
 
 def updatelog():
   clear()
   print("")
   print("""
+    v1.2 ------
+      Added History
+      Added Intro Animation
+
     v1.1 ------
       Added Tape Diagram Solver
       Added Update Log
@@ -61,6 +82,8 @@ def tapediag():
   outft = int(outft)
   outft = tinp2 - tinp1
   outft = str(outft)
+  hisoutft = str(tinp2), "-", str(tinp1)
+  history[hisoutft] = outft
   print("====== Output ======")
   print("|| " + outft)
   print("====================")
@@ -132,6 +155,8 @@ def Hmduhl():
 
     outfh = total - give
     outfh = str(outfh)
+    hisoutfh = str(total), "-", str(give)
+    history[hisoutfh] = outfh
     print("")
     print("====== Output ======")
     print("|| " + outfh)
@@ -170,12 +195,20 @@ def calc():
         init()
     if oper == "add":
         out = num1inp + num2inp
+        hisout = str(num1inp) + "+" + str(num2inp)
+        history[hisout] = out
     elif oper == "subtract":
         out = num1inp - num2inp
+        hisout = str(num1inp) + "-" + str(num2inp)
+        history[hisout] = out
     elif oper == "multiply":
         out = num1inp * num2inp
+        hisout = str(num1inp) + "*" + str(num2inp)
+        history[hisout] = out
     elif oper == "divide":
         out = num1inp / num2inp
+        hisout = str(num1inp) + "/" + str(num2inp)
+        history[hisout] = out
     else:
         print("Enter add, subtract, multiply, or divide.")
         sleep(1)
@@ -212,7 +245,87 @@ def menu():
         tapediag()
     if choice == "7":
         updatelog()
+    if choice == "8":
+        historyread()
+
+def anim():
+  print("M")
+  clear()
+  print("Ma")
+  clear()
+  print("Mat")
 
 resizeplease = input("Drag the window to the edge of the screen so you don't see the code. Some programs require this. Press enter once you've done that.")
+
+print("""
+  ____
+ / / /
+/ / /
+""")
+sleep(0.1)
+clear()
+print("""
+  ____
+ / / / __
+/ / / /_/\
+""")
+sleep(0.1)
+clear()
+print("""
+  ____      
+ / / / __  -/-
+/ / / /_/\ /
+""")
+sleep(0.1)
+clear()
+print("""
+  ____          
+ / / / __  -/- /_
+/ / / /_/\ /  / /
+""")
+sleep(0.1)
+clear()
+print("""
+  ____          
+ / / / __  -/- /_  .
+/ / / /_/\ /  / / /
+""")
+sleep(0.1)
+clear()
+print("""
+  ____          
+ / / / __  -/- /_  . __
+/ / / /_/\ /  / / / / /
+""")
+sleep(0.1)
+clear()
+print("""
+  ____          
+ / / / __  -/- /_  . __  __
+/ / / /_/\ /  / / / / / /_/\
+""")
+sleep(0.1)
+clear()
+print("""
+  ____          
+ / / / __  -/- /_  . __  __  -/-
+/ / / /_/\ /  / / / / / /_/\ /
+""")
+sleep(0.1)
+clear()
+print("""
+  ____          
+ / / / __  -/- /_  . __  __  -/- __
+/ / / /_/\ /  / / / / / /_/\ /  /_/
+""")
+sleep(0.1)
+clear()
+print("""
+  ____          
+ / / / __  -/- /_  . __  __  -/- __  __
+/ / / /_/\ /  / / / / / /_/\ /  /_/ /
+""")
+sleep(1)
+clear()
 init()
 
