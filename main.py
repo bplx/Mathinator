@@ -10,7 +10,7 @@ def init():
     print("||   ______  __ __       __  __ __ __  __ ||")
     print("||  /  /  / /-/ / /_/ / / / /-/ / / / /_/ ||")
     print("|| /  /  / / / / / / / / / / / / /_/ / \\  ||")
-    print("||                  V1.2                  ||")
+    print("||                 V1.2.2                 ||")
     print("||                                        ||")
     print("============================================")
     print("")
@@ -31,8 +31,10 @@ def historyread():
   clear()
   print("")
   print("====== History ======")
-  for x, y in history.items():
-    print("||", x, "=", y)
+  llistr = len(history)
+  llistr = str(llistr)
+  for i, (x, y)in enumerate(history.items(), start=1):
+    print("||", f"{i}: {x} = {y}")
   print("=====================")
   print("")
   print("Press enter to continue")
@@ -45,6 +47,9 @@ def updatelog():
   clear()
   print("")
   print("""
+    v1.2.2 ----
+      Useful tweaks to history
+
     v1.2 ------
       Added History
       Added Intro Animation
@@ -125,6 +130,11 @@ def help():
     the first number is 1705, and the total is 3627.
     This program will calculate the number in the empty box.
     Cool, isn't it.
+
+  HISTORY 
+    Every calculation you've done will appear here in order.
+    Pretty handy tool. 
+
       """)
     print(" ")
     print("   Press enter to continue.")
