@@ -1,7 +1,15 @@
-from time import sleep
-history = {
+#  ______ _ __  _
+# | .  . | | .\| |
+# | |\/| | | |\\ |
+# |_|  |_|_|_| \_| 
+# 
+# Mathinator 1.3.1
+# Developed by Dexter Summering
+# Open Source at github.com/bplx/Mathinator
+#
 
-}
+from time import sleep
+history = {}
 
 # define our clear function
 def init():
@@ -10,22 +18,89 @@ def init():
     print("||   ______  __ __       __  __ __ __  __ ||")
     print("||  /  /  / /-/ / /_/ / / / /-/ / / / /_/ ||")
     print("|| /  /  / / / / / / / / / / / / /_/ / \\  ||")
-    print("||                 V1.2.2                 ||")
+    print("||                 V1.3.1                 ||")
     print("||                                        ||")
     print("============================================")
-    print("")
-    print("------------------")
-    print("1. Calculator")
-    print("2. Refresh system")
-    print("3. Exit")
-    print("4. How much do you have left? ")
-    print("5. Help")
-    print("6. Tape Diagram Solver")
-    print("7. Update Log")
-    print("8. History")
-    print("------------------")
-    print("")
+    print("|| 1. Calculator")
+    print("|| 2. Refresh system")
+    print("|| 3. Exit")
+    print("|| 4. How much do you have left? ")
+    print("|| 5. Help")
+    print("|| 6. Tape Diagram Solver")
+    print("|| 7. Update Log")
+    print("|| 8. History")
+    print("|| 9. Less Than, Greater Than, or Equal?")
+    print("||")
+    print("|| Enter a number into the dialog below and press enter.")
     menu()
+
+def lgoe():
+  clear()
+  out = ""
+  print("")
+  print("====== Numbers ======")
+  lgoei1 = input("|| First number: ")
+  lgoei2 = input("|| Second number: ")
+  print("=====================")
+  print("")
+  try:
+    lgoei1 = int(lgoei1)
+    lgoei2 = int(lgoei2)
+  except:
+    clear()
+    print("")
+    print("====== Oops! ======")
+    print("|| Those aren't numbers.")
+    print("===================")
+    print("")
+    sleep(1)
+    clear()
+    lgoe()
+
+  if lgoei1 > lgoei2:
+    lgoei1 = str(lgoei1)
+    lgoei2 = str(lgoei2)
+    out = lgoei1 + " is bigger than " + lgoei2
+  if lgoei1 < lgoei2:
+    lgoei1 = str(lgoei1)
+    lgoei2 = str(lgoei2)
+    out = lgoei1 + " is smaller than " + lgoei2
+  if lgoei1 == lgoei2:
+    lgoei1 = str(lgoei1)
+    lgoei2 = str(lgoei2)
+    out = lgoei1 + " is equal to " + lgoei2
+  print("====== Solution ======")
+  print("|| " + out + ".")
+  print("======================")
+  print("")
+  print("Press enter to continue.")
+  petcfl = input("")
+  if petcfl == "":
+    clear()
+    init()
+
+
+def o9ester():
+  clear()
+  print("")
+  print("====== JFSHFSHSKJHL ======")
+  print("|| stop stop stop stop stop stop stop")
+  print("==========================")
+  print("")
+  sleep(1)
+  clear()
+  init()
+
+def o9():
+  clear()
+  print("")
+  print("========= Oops! ==========")
+  print("|| That option doesn't exist...")
+  print("==========================")
+  print("")
+  sleep(1)
+  clear()
+  init()
 
 def historyread():
   clear()
@@ -47,6 +122,17 @@ def updatelog():
   clear()
   print("")
   print("""
+    v1.3.1 ----
+      Division by 0 failsafe in the calculator
+      Added Less Than, More Than, or Equal
+
+    v1.3 ------
+      Quality-of-life updates
+      Many bug fixes
+      More user-friendly UI 
+      Updated Intro
+      More failsafes
+
     v1.2.2 ----
       Useful tweaks to history
 
@@ -77,19 +163,30 @@ def tapediag():
   clear()
   outft = 0
   print("")
-  print("======= Input ========")
+  print("======= Solver =======")
   tinp1 = input("|| Tape diagram number 1: ")
   tinp2 = input("|| Tape diagram total: ")
   print("======================")
   print("")
-  tinp1 = int(tinp1)
-  tinp2 = int(tinp2)
-  outft = int(outft)
-  outft = tinp2 - tinp1
-  outft = str(outft)
-  hisoutft = str(tinp2), "-", str(tinp1)
-  history[hisoutft] = outft
-  print("====== Output ======")
+  try:
+    tinp1 = int(tinp1)
+    tinp2 = int(tinp2)
+    outft = int(outft)
+    outft = tinp2 - tinp1
+    outft = str(outft)
+    hisoutft = str(tinp2), "-", str(tinp1)
+    history[hisoutft] = outft
+  except:
+    clear()
+    print("")
+    print("======= Oops! =======")
+    print("|| Those aren't numbers.")
+    print("=====================")
+    print("")
+    sleep(1)
+    clear()
+    tapediag()
+  print("====== Answer ======")
   print("|| " + outft)
   print("====================")
   print("")
@@ -153,7 +250,7 @@ def clear():
 def Hmduhl():
     clear()
     print("")
-    print("===== Input =========")
+    print("===== Solver ========")
     give = input("|| How much did you give?: ")
     total = input("|| How much did you have before?: ")
     print("=====================")
@@ -161,7 +258,15 @@ def Hmduhl():
         give = int(give)
         total = int(total)
     except:
-        print("stop toying with me. those aren't numbers.")
+        clear()
+        print("")
+        print("======= Oops! ========")
+        print("|| Those aren't numbers.")
+        print("======================")
+        print("")
+        sleep(1)
+        clear()
+        Hmduhl()
 
     outfh = total - give
     outfh = str(outfh)
@@ -187,9 +292,7 @@ def calc():
     clear()
     import numbers
     print(" ")
-    print("Dexter's \"Cool-As-Hell\" Calculator")
-    print(" ")
-    print("====== Input ============")
+    print("====== Calculator =======")
     num1inp = input("|| First Number: ")
     num2inp = input("|| Second Number: ")
     oper = input("|| Operator: ")
@@ -199,10 +302,14 @@ def calc():
         num1inp = int(num1inp)
         num2inp = int(num2inp)
     except:
-        print("stop toying with me. those aren't numbers.")
-        wait(1)
         clear()
-        init()
+        print("")
+        print("======= Oops! =======")
+        print("|| Those aren't numbers.")
+        print("=====================")
+        sleep(1)
+        clear()
+        calc()
     if oper == "add":
         out = num1inp + num2inp
         hisout = str(num1inp) + "+" + str(num2inp)
@@ -216,19 +323,35 @@ def calc():
         hisout = str(num1inp) + "*" + str(num2inp)
         history[hisout] = out
     elif oper == "divide":
-        out = num1inp / num2inp
-        hisout = str(num1inp) + "/" + str(num2inp)
-        history[hisout] = out
+        if num2inp == 0:
+          clear()
+          print("")
+          print("====== Oops! ======")
+          print("|| You divided by 0.")
+          print("===================")
+          print("")
+          sleep(1)
+          clear()
+          calc()
+        else:
+          out = num1inp / num2inp
+          hisout = str(num1inp) + "/" + str(num2inp)
+          history[hisout] = out
     else:
-        print("Enter add, subtract, multiply, or divide.")
+        clear()
+        print("")
+        print("======= Oops! =======")
+        print("|| You entered an invalid operator.")
+        print("=====================")
+        print("")
         sleep(1)
         clear()
-        init()
+        calc()
     out = int(out)
     lol = 1
     lol = int(lol)
     out = str(out)
-    print("====== Output ======")
+    print("====== Answer ======")
     print("|| " + out)
     print("====================")
     print("")
@@ -240,7 +363,8 @@ def calc():
 
 
 def menu():
-    choice = input("Tool: ")
+    choice = input("|| Choice: ")
+    print("=================")
     if choice == "1":
         calc()
     if choice == "2":
@@ -257,6 +381,10 @@ def menu():
         updatelog()
     if choice == "8":
         historyread()
+    if choice == "9":
+        lgoe()
+    else:
+        o9()
 
 def anim():
   print("M")
@@ -265,68 +393,68 @@ def anim():
   clear()
   print("Mat")
 
-resizeplease = input("Drag the window to the edge of the screen so you don't see the code. Some programs require this. Press enter once you've done that.")
+resizeplease = input(" Drag the window to the edge of the screen so you don't see the code. \n Some programs require this. \n Press enter once you've done that.")
 
 print("""
-  ____
- / / /
-/ / /
+  ____  /
+ / / / /
+/ / / /
 """)
 sleep(0.1)
 clear()
 print("""
-  ____
- / / / __
-/ / / /_/\
-""")
-sleep(0.1)
-clear()
-print("""
-  ____      
- / / / __  -/-
+  ____       /
+ / / / __   /
 / / / /_/\ /
 """)
 sleep(0.1)
 clear()
 print("""
-  ____          
- / / / __  -/- /_
-/ / / /_/\ /  / /
+  ____          /
+ / / / __  -/- /
+/ / / /_/\ /  /
 """)
 sleep(0.1)
 clear()
 print("""
-  ____          
- / / / __  -/- /_  .
+  ____              /
+ / / / __  -/- /_  /
 / / / /_/\ /  / / /
 """)
 sleep(0.1)
 clear()
 print("""
-  ____          
- / / / __  -/- /_  . __
-/ / / /_/\ /  / / / / /
+  ____                /
+ / / / __  -/- /_  . /
+/ / / /_/\ /  / / / /
 """)
 sleep(0.1)
 clear()
 print("""
-  ____          
- / / / __  -/- /_  . __  __
-/ / / /_/\ /  / / / / / /_/\
+  ____                    /
+ / / / __  -/- /_  . __  /
+/ / / /_/\ /  / / / / / / 
 """)
 sleep(0.1)
 clear()
 print("""
-  ____          
- / / / __  -/- /_  . __  __  -/-
+  ____                         /
+ / / / __  -/- /_  . __  __   / 
 / / / /_/\ /  / / / / / /_/\ /
 """)
 sleep(0.1)
 clear()
 print("""
   ____          
+ / / / __  -/- /_  . __  __  -/- /
+/ / / /_/\ /  / / / / / /_/\ /  /
+""")
+sleep(0.1)
+clear()
+print("""
+  ____          
  / / / __  -/- /_  . __  __  -/- __
-/ / / /_/\ /  / / / / / /_/\ /  /_/
+/ / / /_/\ /  / / / / / /_/\ /  /_/ /
 """)
 sleep(0.1)
 clear()
